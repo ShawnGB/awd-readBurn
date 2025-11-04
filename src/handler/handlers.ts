@@ -7,4 +7,8 @@ const indexHandler = (req: Request, res: Response) => {
   });
 };
 
+const getMessageHandler = (req: Request, res: Response): void => {
+  res.send("Submitting message");
+};
+
 export { indexHandler };

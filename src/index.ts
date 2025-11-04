@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import nunjucks from "nunjucks";
 import { indexHandler } from "./handler/handlers";
-import { logger } from "./templates/middleware/loggerMiddleware";
+import { logger } from "./middleware/loggerMiddleware";
 
 const app = express();
 const port = process.env.PORT || 3030;
@@ -16,6 +16,7 @@ app.set("view engine", "njk");
 
 //middleware init
 app.use(logger);
+app.use(express.static("public"));
 
 app.get("/", indexHandler);
 
