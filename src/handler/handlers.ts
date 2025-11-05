@@ -7,8 +7,13 @@ const indexHandler = (req: Request, res: Response) => {
   });
 };
 
-const getMessageHandler = (req: Request, res: Response): void => {
-  res.send("Submitting message");
-};
+const htmxTestHandler = (req: Request, res: Response): void => {
+  const { name, message } = req.body;
 
-export { indexHandler };
+  console.log(name, message);
+  // Simulate API delay with timeout (3 seconds)
+  setTimeout(() => {
+    res.send(`${name} ${message}`);
+  }, 3000);
+};
+export { indexHandler, htmxTestHandler };

@@ -1,4 +1,3 @@
-/* Glassmorphic styling */
 body {
   margin: 0;
   min-height: 100vh;
@@ -20,6 +19,9 @@ article {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 2rem;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -28,7 +30,6 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-/* Form styling */
 form label {
   color: white;
   font-weight: 600;
@@ -55,7 +56,6 @@ form textarea::placeholder {
 form input:focus,
 form textarea:focus {
   outline: none;
-  ring: 2px solid rgba(255, 255, 255, 0.5);
   border-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -80,4 +80,66 @@ form button:hover {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
   transform: translateY(-1px);
+}
+
+.spinner {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.spinner.htmx-request {
+  display: flex;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  animation: prixClipFix 2s linear infinite;
+}
+
+.loader::after {
+  inset: 8px;
+  transform: rotate3d(90, 90, 0, 180deg);
+  border-color: #ff3d00;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  75%,
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+}
+
+#form-block:has(.spinner.htmx-request) form {
+  display: none !important;
 }

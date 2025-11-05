@@ -1,22 +1,25 @@
-{% extends "index.njk" %} {% block form%}
-<form>
-  <label for="name">Name</label>
-  <input
-    type="text"
-    id="name"
-    name="name"
-    placeholder="Enter your name"
-  />
+{% extends "index.njk" %}
 
-  <label for="message">Message</label>
-  <textarea
-    id="message"
-    name="message"
-    rows="5"
-    placeholder="Enter your message"
-  ></textarea>
+{% block content %}
+<div id="form-block">
+  <form hx-post="/htmx" hx-target="#form-block" hx-swap="outerHTML" hx-indicator=".spinner">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required />
 
-  <button type="submit">Submit</button>
-</form>
+    <label for="message">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      placeholder="Enter your message"
+      required
+    ></textarea>
 
-{% endblock%}
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="spinner htmx-indicator">
+    <span class="loader"></span>
+  </div>
+</div>
+{% endblock %}
