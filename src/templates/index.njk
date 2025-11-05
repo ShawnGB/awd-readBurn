@@ -8,7 +8,7 @@
       crossorigin="anonymous"
     ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
+    <title>Read & Burn</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
@@ -17,11 +17,7 @@
   </head>
   <body>
     <main class="container">
-      <article>
-        {% block header %}
-        <h1>{{message}}</h1>
-        {% endblock %} {% block content %} {% endblock %}
-      </article>
+      <article>{% block content %} {% endblock %}</article>
     </main>
   </body>
 </html>

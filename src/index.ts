@@ -20,7 +20,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", indexHandler);
+app.get("{/:id}", indexHandler);
 
 app.post("/htmx", htmxTestHandler);
 

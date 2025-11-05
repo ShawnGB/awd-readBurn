@@ -143,3 +143,16 @@ form button:hover {
 #form-block:has(.spinner.htmx-request) form {
   display: none !important;
 }
+
+/* Better text readability */
+h2,
+p,
+small,
+a {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message-unavailable {
+  text-align: center;
+}

@@ -1,0 +1,13 @@
+{% extends "index.njk" %} {% block content %}
+<div
+  id="form-block"
+  hx-get="/"
+  hx-trigger="load delay:10s"
+  hx-target="body"
+  hx-swap="outerHTML"
+>
+  <h1>{{ name }} sent you a message</h1>
+  <h2>{{ message }}</h2>
+  <p><small>⏱️ This message will self-destruct in 10 seconds</small></p>
+</div>
+{% endblock %}
